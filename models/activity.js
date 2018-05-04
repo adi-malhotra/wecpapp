@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 
 const ActivitySchema = mongoose.Schema({
-  id: Number,
+  id: String,
   keyword: String,
-  url: String,
   hoveredCount: Number,
   clickedCount: Number,
-  hoveredDates: [Date],
-  clickedDates: [Date]
+  hoveredDates: [String],
+  clickedDates: [String]
 })
 
 const Activity = module.exports = mongoose.model('Activity', ActivitySchema);

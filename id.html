@@ -1,4 +1,4 @@
-<html ng-app="angularjsNodejsTutorial" ng-controller = "myController">
+<html ng-app="angularjsNodejs" ng-controller = "myController">
     <head>
         <title>{{title}}</title>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
@@ -12,7 +12,7 @@
       <div class="container">
         <div class="row">
           <div ng-repeat="item in data" class="col-md-3">
-            <img src={{item.link}}  style="max-width:100%; min-height:100%" ng-click="clicked(item.id)" ng-mouseover="hovered(item.id)">
+            <img src={{item.link}}  style="max-width:100%; min-height:100%" ng-click="clicked(item)">
           </div>
         </div>
       </div>
