@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
 const ActivitySchema = mongoose.Schema({
-  id:{
-    type: String,
-    required: true
-  },
+  id: Number,
   keyword: String,
   url: String,
   hoveredCount: Number,
