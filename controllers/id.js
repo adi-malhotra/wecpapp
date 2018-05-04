@@ -5,7 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Activity = require('../models/activity.js');
 
-const API_KEY = 'AIzaSyBb9N8KNW0MxY-ETxBx00Qx7r76cdAlItk';
+const API_KEY = 'AIzaSyCyW6glXsA_uDkCJZ-N0v4t8bFRFiiOSeI';
 const SEARCH_ENGINE_ID = '003871022704227956238:jvsipjdgfim';
 const URL = "www.googleapis.com";
 
@@ -51,7 +51,7 @@ router.get('/',(request,res)=>{
 router.post('/',(req,res)=>{
   var queryString = req.originalUrl;
   var event  = queryString.split('/')[3];
-  var search_id = queryString.split('/')[2];
+  var search_id = queryString.split('/')[2].split('%20').join(' ');
   // console.log("id is : " + search_id);
   var hCount = 0, cCount = 0;
   var hDates = [],cDates = [];
@@ -100,6 +100,7 @@ router.post('/',(req,res)=>{
       })
     }
   });
+  return;
 })
 
 module.exports = router;

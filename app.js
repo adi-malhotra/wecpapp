@@ -20,12 +20,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(/\/data\/.*/,id);
-app.use(/.*\/admin/,admin);
+app.use(/.*\/data\/admin/,admin);
+
 app.get(/.*\/admin/,(req,res)=>{
-  res.sendFile(path.join(__dirname, './', '', '/admin.html'))
+  res.sendFile(path.join(__dirname, './public/html/', '', '/admin.html'))
 })
 app.get(/.*/, (req,res) => {
-    res.sendFile(path.join(__dirname, './', '', '/id.html'))
+    res.sendFile(path.join(__dirname, './public/html/', '', '/id.html'))
 })
 
 app.listen(port, () => {
