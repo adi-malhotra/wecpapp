@@ -23,9 +23,7 @@ function updateDates(hDates,cDates,hCount,cCount,event){
 }
 
 router.get('/',(request,res)=>{
-  // console.log("hey this workedssss");
   var queryString = request.originalUrl.split('/')[2].split('%20').join(' ');
-  // console.log(queryString);
   var path = "/customsearch/v1?key=" + API_KEY + "&cx=" + SEARCH_ENGINE_ID + "&q=" + queryString.split(' ').join('%20') + "&searchType=image";
   const options = {
     hostname: URL,
@@ -52,20 +50,17 @@ router.post('/',(req,res)=>{
   var queryString = req.originalUrl;
   var event  = queryString.split('/')[3];
   var search_id = queryString.split('/')[2].split('%20').join(' ');
-  // console.log("id is : " + search_id);
   var hCount = 0, cCount = 0;
   var hDates = [],cDates = [];
   Activity.findOne({id:search_id},'id hoveredCount clickedCount hoveredDates clickedDates',(err,activity)=>{
     if(err) console.log('Error fetching activity');
     if(activity){
       search_id = activity.id;
-      // console.log(activity);
       var datesAndCounts = updateDates(activity.hoveredDates,activity.clickedDates,activity.hoveredCount,activity.clickedCount,event);
       hDates = datesAndCounts[0];
       cDates = datesAndCounts[1];
       hCount = datesAndCounts[2];
       cCount = datesAndCounts[3];
-      // console.log(cDates);
       Activity.update({id:activity.id},
         {
           $set:{
@@ -100,7 +95,6 @@ router.post('/',(req,res)=>{
       })
     }
   });
-  return;
 })
 
 module.exports = router;

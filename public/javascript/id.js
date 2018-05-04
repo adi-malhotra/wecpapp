@@ -3,7 +3,7 @@ app.controller('myController',function($scope, $http) {
     var url = window.location.href;
     var query = url.split('/')[3].split('%20').join(" ");
     $scope.data = [];
-    $scope.title = '5 '+ query+' images';
+    $scope.title = '5 '+ query + ' Images';
     var request = $http.get('/data/'+query);
     request.success(function(data) {
         $scope.data = data.items.slice(0,5);
